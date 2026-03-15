@@ -9,6 +9,24 @@
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding MainPageLoadedCommand}" />
     </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <Style TargetType="RadioButton" x:Key="TrackRBStyle">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="IsChecked" Value="False" />
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="CornerRadius" Value="7" />
+        </Style>
+    </ContentPage.Resources>
     
     <ScrollView>
         <VerticalStackLayout
@@ -19,6 +37,34 @@
                 HeightRequest="185"
                 Aspect="AspectFit"
                 SemanticProperties.Description="dot net bot in a submarine number ten" />
+
+            <RadioButton
+                x:Name="TrackDegFRBtn"
+                Content="DegF"
+                IsChecked="{Binding DegFChecked}"
+                CheckedChanged ="TrackDegFRBtn_CheckedChanged"
+                Style="{StaticResource TrackRBStyle}">
+                        <RadioButton.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                        Command="{Binding ChangeTrackDataCommand}"
+                        CommandParameter="DegC"
+                        EventName="CheckedChanged" />
+                        </RadioButton.Behaviors>
+            </RadioButton>
+            
+            <RadioButton
+                x:Name="TrackDegCRBtn"
+                Content="DegC"
+                IsChecked="{Binding DegCChecked}"
+                CheckedChanged="TrackDegCRBtn_CheckedChanged"
+                Style="{StaticResource TrackRBStyle}">
+                        <RadioButton.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                        Command="{Binding ChangeTrackDataCommand}"
+                        CommandParameter="DegC"
+                        EventName="CheckedChanged" />
+                        </RadioButton.Behaviors>
+            </RadioButton>
 
             <Label
                 Text="Hello, World!"

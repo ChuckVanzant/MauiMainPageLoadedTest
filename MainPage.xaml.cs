@@ -1,4 +1,6 @@
-﻿namespace MauiMainPageLoadedTest
+﻿using System.Diagnostics;
+
+namespace MauiMainPageLoadedTest
 {
     public partial class MainPage : ContentPage
     {
@@ -19,6 +21,16 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+        }
+
+        private void TrackDegFRBtn_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            Debug.WriteLine($"TrackDegFRBtn_CheckedChanged: {e.Value} ");
+        }
+
+        private void TrackDegCRBtn_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            Debug.WriteLine($"TrackDegCRBtn_CheckedChanged: {e.Value} ");
         }
     }
 }

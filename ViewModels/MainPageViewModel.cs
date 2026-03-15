@@ -16,6 +16,13 @@ public partial class MainPageViewModel : ObservableObject, IViewModel
         Debug.WriteLine($"MainPageViewModel initialized");
     }
 
+    [ObservableProperty]
+    public bool degFChecked;
+
+    [ObservableProperty]
+    public bool degCChecked;
+
+
     [RelayCommand]
     public async Task MainPageLoaded()
     {
@@ -29,5 +36,9 @@ public partial class MainPageViewModel : ObservableObject, IViewModel
         Debug.WriteLine($"MainPageLoaded initialized: {MainPageInitialized}");
     }
 
-
+    [RelayCommand]
+    public void ChangeTrackData(string arg)
+    {
+        Debug.WriteLine($"ChangeTrackData: {arg}  DegFChecked: {DegFChecked}  DegCChecked: {DegCChecked} ");
+    }
 }
