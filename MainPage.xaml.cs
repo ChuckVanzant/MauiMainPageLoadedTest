@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using MauiMainPageLoadedTest.ViewModels;
 
 namespace MauiMainPageLoadedTest
 {
@@ -6,9 +7,11 @@ namespace MauiMainPageLoadedTest
     {
         int count = 0;
 
-        public MainPage()
+        public MainPage(MainPageViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
+
         }
 
         private void OnCounterClicked(object? sender, EventArgs e)
@@ -23,14 +26,6 @@ namespace MauiMainPageLoadedTest
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
 
-        private void TrackDegFRBtn_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            Debug.WriteLine($"TrackDegFRBtn_CheckedChanged: {e.Value} ");
-        }
 
-        private void TrackDegCRBtn_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            Debug.WriteLine($"TrackDegCRBtn_CheckedChanged: {e.Value} ");
-        }
     }
 }

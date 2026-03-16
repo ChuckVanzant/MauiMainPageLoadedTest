@@ -13,7 +13,7 @@ public partial class MainPageViewModel : ObservableObject, IViewModel
 
     public MainPageViewModel()
     {
-        Debug.WriteLine($"MainPageViewModel initialized");
+        //Debug.WriteLine($"MainPageViewModel initialized");
     }
 
     [ObservableProperty]

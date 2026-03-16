@@ -4,10 +4,14 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodels="clr-namespace:MauiMainPageLoadedTest.ViewModels"
              x:Class="MauiMainPageLoadedTest.MainPage"
-             x:DataType="viewmodels:MainPageViewModel">
+             x:Name="Main"
+             x:DataType="viewmodels:MainPageViewModel" >
 
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding MainPageLoadedCommand}" />
+        <toolkit:EventToCommandBehavior 
+            EventName="Loaded" 
+            Command="{Binding MainPageLoadedCommand}"
+            BindingContext="{Binding Source={x:Reference Main}, Path=BindingContext}" />
     </ContentPage.Behaviors>
 
     <ContentPage.Resources>
@@ -42,13 +46,13 @@
                 x:Name="TrackDegFRBtn"
                 Content="DegF"
                 IsChecked="{Binding DegFChecked}"
-                CheckedChanged ="TrackDegFRBtn_CheckedChanged"
                 Style="{StaticResource TrackRBStyle}">
                         <RadioButton.Behaviors>
                             <toolkit:EventToCommandBehavior
-                        Command="{Binding ChangeTrackDataCommand}"
-                        CommandParameter="DegC"
-                        EventName="CheckedChanged" />
+                                Command="{Binding ChangeTrackDataCommand}"
+                                CommandParameter="DegF"
+                                EventName="CheckedChanged"
+                                BindingContext="{Binding Source={x:Reference Main}, Path=BindingContext}" />
                         </RadioButton.Behaviors>
             </RadioButton>
             
@@ -56,13 +60,13 @@
                 x:Name="TrackDegCRBtn"
                 Content="DegC"
                 IsChecked="{Binding DegCChecked}"
-                CheckedChanged="TrackDegCRBtn_CheckedChanged"
                 Style="{StaticResource TrackRBStyle}">
                         <RadioButton.Behaviors>
                             <toolkit:EventToCommandBehavior
-                        Command="{Binding ChangeTrackDataCommand}"
-                        CommandParameter="DegC"
-                        EventName="CheckedChanged" />
+                                Command="{Binding ChangeTrackDataCommand}"
+                                CommandParameter="DegC"
+                                EventName="CheckedChanged"
+                                BindingContext="{Binding Source={x:Reference Main}, Path=BindingContext}" />
                         </RadioButton.Behaviors>
             </RadioButton>
 

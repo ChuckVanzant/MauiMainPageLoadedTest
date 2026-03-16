@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using MauiMainPageLoadedTest.ViewModels;
 
 namespace MauiMainPageLoadedTest
 {
@@ -20,6 +21,9 @@ namespace MauiMainPageLoadedTest
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainPageViewModel>();
 
             return builder.Build();
         }
